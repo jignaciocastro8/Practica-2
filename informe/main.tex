@@ -1,0 +1,53 @@
+\documentclass{article}
+\input{setup.tex}
+\begin{document}
+\section{Introducción}
+
+\section{Objetivos y Metodología}
+    Se propone una investigación enfocada en estudiar y evaluar la aplicación del \comillas{Procesamiento de lenguaje natural}
+    o NLP por su sigla en inglés para construir un índice económico.
+
+\section{Desarrollo}
+    Lo primero es definir y entender para que sirve un índice económico, desde ahora simplemente \comillas{índice}. Este se puede definir como un indicador estadístico asociado a un conjunto de instrumentos financieros, en este trabajo sólo se consideran bonos y acciones, matemáticamente se puede definir como una serie de tiempo $(X_t)_{t=1}^{N}$ indexada por día. También, se denota como índice al conjunto de instrumentos seleccionados para su construcción. El cálculo del índice se puede hacer de variadas formas dependiendo de la naturaleza de los instrumentos que lo componen, generalmente se hace uso de un promedio ponderado de los precios de los instrumentos en el índice. Por ejemplo, suponiendo un conjunto $I$ de
+    instrumentos financieros, claramente finito, podemos computar el valor de nuestro índice al día $t$ como:
+    
+    \begin{align*}
+    	X_t = \frac{1}{|I|}\sum_{i \in I} P(i)_t.
+    \end{align*}
+    
+   	Donde $P(i)$ corresponde a la serie de precios del instrumento $i$. Este tipo de índices se usan como indicadores de que tan fructífera ha sido la economía, una subida en este valor se puede entender como un alza en los precios y por lo tanto, un \comillas{alza del sector económico} y viceversa. Uno de los índices más importantes es el \textbf{S\&}\textbf{P 500} de Estados Unidos, país que al ser potencia mundial influye en la economía del resto del mundo, este índice se compone de $500$ acciones las cuales cotizan en la primera y segunda bolsa de valores más importantes de EE.UU, la de Nueva York o NYSE (New York Stock Exchange) y NASDAQ (National Association of Securities Dealers Automated Quotation), también ubicada en Nueva York, correspondientemente. En el caso de Chile, existe el \textbf{IPSA} o Índice de Precio Selectivo de Acciones, este agrupa las $30$ acciones con mayor presencia bursátil en el mercado y es reajustado cada año haciendo entrar y salir acciones.
+    
+
+
+\subsection{Replicación IPSA}
+   	La primera parte de la practica realizada se basó en lograr replicar los valores del IPSA con los datos disponibles. Los datos entregados por LVA corresponden a la información de las transacciones diarias en la Bolsa de Santiago, agrupados por mes en distintos archivos. Estos datos se ven como se muestra en la figura.
+   	\begin{figure}[H]
+   		\centering
+   		\includegraphics[scale=.5]{imgs/transacciones_RV_data.png}
+   		\caption{Muestra de tamaño $5$ de datos disponibles replicación del IPSA, enero 			del $2020$}
+   	\end{figure}
+    	
+
+
+ 
+    
+
+
+
+\section{Punto de que hablar}
+    \begin{enumerate}
+        \item Calculo de índices: IPSA. Explicar el cálculo del índice y por qué se calcula este tipo de indicadores.
+        \item Análisis de sentimientos con twitter: Hablar de la cantidad de data por nemo y poner gráfico de barras.
+        \item Hablar de la decisión de dejar retweets porque representan el mismo comentarios pero de otra persona.
+        \item Comentar que hay tweets en otros idiomas y por lo tanto se hizo necesario trabajar con APIs de idioma.
+        \item Series de tiempo en economía.
+        \item Correlación entre dos variables. 
+        \item Test de correlación.
+        \item Explicar el cálculo del sentimiento saturado, shifted y todo el preproceso que se le hace a los valores pos, neu y neg para transformarlos en un número representativo del sentimiento de cada tweet
+        \item Explicar que el sentimiento del día asociado a un instrumento se calcula como un promedio de los score de tweets diarios.
+        \item Explicar que se busca parámetros que maximicen la correlación entre las variables adecuadas: \textbf{retorno} del sentimiento, sentimiento promedio en el periodo \textbf{sent days}, promedio de los retornos diarios, etc contra el retorno del precio de la acción o menos la tasa de interés para el caso de bonos.
+        \item Mostrar los gráficos del índice obtenido y los nemos que participan del índice.
+    \end{enumerate}
+
+
+\end{document}
