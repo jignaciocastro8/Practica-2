@@ -25,23 +25,30 @@
    	\begin{figure}[H]
    		\centering
    		\includegraphics[scale=.5]{imgs/transacciones_RV_data.png}
-   		\caption{Muestra de tamaño $5$ de datos disponibles para replicación del IPSA, enero $2020$.}
+   		\caption{Muestra de tamaño $5$ de datos disponibles para estimación del IPSA, enero $2020$.}
    		\label{fig:trans}
    	\end{figure}
-    
-   	La columna \textit{Folio} identifica unívocamente a cada transacción, \textit{Precio} indica el precio al cual se transó,  \textit{Cantidad} la cantidad de acciones transadas, \textit{MontoPesos} corresponde a la multiplicación de las dos anteriores y \textit{Nemo} es la etiqueta que se le da a la acción en la bolsa, generalmente corresponde al nombre de la empresa que emite la acción. Algunos de estos Nemos son: BSANTANDER, FALABELLA y ENELCHILE, por ejemplo. El resto de las columnas no será relevante para este estudio.\\
+   \begin{remark}
+   	La mayoría de los datos financieros no incluyen fechas que correspondan a fines de semana o festivos. Esto se debe a que las instituciones que generan estos datos no trabajan en tales días.
+   \end{remark}
+   	En la Figura \ref{fig:trans}, la columna \textit{Folio} identifica unívocamente a cada transacción, \textit{Precio} indica el precio al cual se transó,  \textit{Cantidad} la cantidad de acciones transadas, \textit{MontoPesos} corresponde a la multiplicación de las dos anteriores y \textit{Nemo} es la etiqueta que se le da a la acción en la bolsa, generalmente corresponde al nombre de la empresa que emite la acción. Algunos de estos Nemos son: BSANTANDER, FALABELLA y ENELCHILE, por ejemplo. El resto de las columnas no será relevante para este estudio.\\
    	
+   	Consecuentemente, el valor del IPSA, $(X_t)_t$, lo obtenemos con la siguiente fórmula,
+   	\begin{align}
+   		\label{eq:ipsa1}
+		X_t = \sum_{i\in I} w_i P(i)_t\\
+		\label{eq:ipsa2}
+		w_i = \frac{C_i}{\sum_{i\in I} p(i)_0}
+   	\end{align}
+   donde $I$ es el conjunto de instrumentos que componen el IPSA el año $2020$ \footnote{\href{https://www.rankia.cl/blog/analisis-ipsa/3229498-que-empresas-forman-parte-ipsa-2021}{Lista de empresas componentes del IPSA $2020$ y $2021$.}}, $t$ hace referencia a días, $P(i)$ la serie de precios diarios del instrumento $i$ y $C_i$ corresponde al número de acciones suscritas pagadas del instrumento $i$. Este último término se define como la parte de las acciones disponibles para la venta, y por ende para obtención de fondos por parte de la empresa o sociedad que las emite, que efectivamente han sido suscritas y pagadas. En otras palabras, nos habla del tamaño de cada emisor en el mercado bursátil chileno.
+   Por otra parte, notar que los \comillas{pesos} $w_i$ no suman $1$, la Fórmula \ref{eq:ipsa1} es una adaptación de la fórmula real del IPSA usando la información disponible para el estudio, se mostrará una comparación cambiando los pesos $w_i$.
    	\begin{remark}
-   		La mayoría de los datos financieros no incluyen fechas que correspondan a fines de semana o festivos. Esto se debe a que las instituciones que generan estos datos no trabajan en tales días.
-   	\end{remark}
-   	
-   	\begin{remark}
-   		El análisis no estuvo exento de datos dañados. Las primeras aproximaciones al IPSA se caracterizaban por \textit{peaks} severamente pronunciados o fechas en las cuales los valores obtenidos simplemente no tenían sentido. Estos problemas se deben a que en el caso de no tener el dato, este era reemplazado por un $-1000$ y además, existe un rango de fechas, específicamente en el mes de marzo del $2020$, en las cuales los datos no fueron llenados correctamente (ver Figura \ref{fig:danados}). Esta situación fue confirmada por el supervisor y se decide simplemente eliminar estas filas dañadas. 
+   		El análisis no estuvo exento de daños en los datos. Las primeras aproximaciones al IPSA se caracterizaban por \textit{peaks} severamente pronunciados o fechas en las cuales los valores obtenidos simplemente no tenían sentido. Estos problemas se deben a que en el caso de no tener el dato, este era reemplazado por un $-1000$ y además, existe un rango de fechas, específicamente en el mes de marzo del $2020$, en las cuales los datos no fueron recolectados correctamente (ver Figura \ref{fig:danados}). Esta situación fue confirmada por el supervisor y se decide simplemente eliminar estas filas dañadas. 
    		
    		\begin{figure}[H]
    			\centering
    			\includegraphics[scale=.5]{imgs/muestra_danada.png}
-   			\caption{Muestra de datos dañados.}
+   			\caption{Muestra de datos dañados. Podemos ver los $-1000$ y que, por ejemplo, en la fila del $18$ de marzo del $2020$ la columna \textit{MontoPesos} claramente no corresponde a la multiplicación entre \textit{Cantidad} y \textit{Precio}.}
    			\label{fig:danados}
    		\end{figure}
    		
@@ -54,24 +61,43 @@
    		\caption{Muestra de tamaño $5$ de las transacciones asociadas a \textbf{CCU} el 15 de abril del $2020$.}
    		\label{fig:ccu_abril}
    	\end{figure}
-   	Se decide calcular el precio del día como un promedio de \textit{Precios} ponderando por \textit{MontoPesos}.
-    \begin{align*}
-        X_t = \sum_{i\in I} P(i)_t w(i)
-    \end{align*}
-
-
-    donde $w(i)$ es un peso que representa la capitalización de cada instrumento y es invariante 
-    con respecto a $t$.
+   	Se decide calcular el precio del día como un promedio de los valores \textit{Precio} ponderando por los \textit{MontoPesos}. Es decir, para un instrumento $i$,
+   	\begin{align*}
+   		P(i)_t = \frac{1}{\sum_{k\in T(i,t)} MontoPesos_k}\sum_{k\in T(i,t)} Precio_k * MontoPesos_k
+   	\end{align*}
+ 	donde $T(i,t)$ son las transacciones del instrumento $i$ en el día $t$. Lo anterior nos entrega una estimación del precio del día. Por otro lado, la cantidad de acciones suscritas pagadas la obtenemos de la página web de la \textit{Bolsa de Santiago} \footnote{\href{https://www.bolsadesantiago.com/}{Bolsa de Santiago.}}. Finalmente, en la Figura \ref{fig:ipsa_replication} se expone el resultado de este procedimiento.
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=.25]{imgs/ipsa_replication.png}
-		\caption{Replicación del ipsa.}
+		\includegraphics[scale=.35]{imgs/ipsa_replication.png}
+		\caption{Replicación del IPSA.}
 		\label{fig:ipsa_replication}
 	\end{figure}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%% END DOCUMENT %%%%%%%%%%%%%%%%%%
+
+
+
+\newpage
+
+%\input{biblio}
 \section{Punto de que hablar}
     \begin{enumerate}
         \item Calculo de índices: IPSA. Explicar el cálculo del índice y por qué se calcula este tipo de indicadores.
