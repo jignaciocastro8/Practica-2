@@ -20,17 +20,55 @@
 
 
 \subsection{Replicación IPSA}
-   	La primera parte de la practica realizada se basó en lograr replicar los valores del IPSA con los datos disponibles. Los datos entregados por LVA corresponden a la información de las transacciones diarias en la Bolsa de Santiago, agrupados por mes en distintos archivos. Estos datos se ven como se muestra en la figura.
+   	La primera parte del trabajo realizado se basó en replicar los valores del \textbf{IPSA} con los datos disponibles. La información entregada por \textbf{LVA} corresponde a los datos de transacciones diarias en la Bolsa de Santiago, agrupados por mes en distintos archivos. 
+    Estos datos se ven como se muestra en la Figura \ref{fig:trans}.
    	\begin{figure}[H]
    		\centering
    		\includegraphics[scale=.5]{imgs/transacciones_RV_data.png}
-   		\caption{Muestra de tamaño $5$ de datos disponibles replicación del IPSA, enero 			del $2020$}
+   		\caption{Muestra de tamaño $5$ de datos disponibles para replicación del IPSA, enero $2020$.}
+   		\label{fig:trans}
    	\end{figure}
-    	
-
-
- 
     
+   	La columna \textit{Folio} identifica unívocamente a cada transacción, \textit{Precio} indica el precio al cual se transó,  \textit{Cantidad} la cantidad de acciones transadas, \textit{MontoPesos} corresponde a la multiplicación de las dos anteriores y \textit{Nemo} es la etiqueta que se le da a la acción en la bolsa, generalmente corresponde al nombre de la empresa que emite la acción. Algunos de estos Nemos son: BSANTANDER, FALABELLA y ENELCHILE, por ejemplo. El resto de las columnas no será relevante para este estudio.\\
+   	
+   	\begin{remark}
+   		La mayoría de los datos financieros no incluyen fechas que correspondan a fines de semana o festivos. Esto se debe a que las instituciones que generan estos datos no trabajan en tales días.
+   	\end{remark}
+   	
+   	\begin{remark}
+   		El análisis no estuvo exento de datos dañados. Las primeras aproximaciones al IPSA se caracterizaban por \textit{peaks} severamente pronunciados o fechas en las cuales los valores obtenidos simplemente no tenían sentido. Estos problemas se deben a que en el caso de no tener el dato, este era reemplazado por un $-1000$ y además, existe un rango de fechas, específicamente en el mes de marzo del $2020$, en las cuales los datos no fueron llenados correctamente (ver Figura \ref{fig:danados}). Esta situación fue confirmada por el supervisor y se decide simplemente eliminar estas filas dañadas. 
+   		
+   		\begin{figure}[H]
+   			\centering
+   			\includegraphics[scale=.5]{imgs/muestra_danada.png}
+   			\caption{Muestra de datos dañados.}
+   			\label{fig:danados}
+   		\end{figure}
+   		
+   	\end{remark}
+   	
+   	Lo primero que se necesita es estimar el precio de una acción en un día cualquiera. Para esto nos fijamos en una acción (o Nemo) y fecha cualquiera, a modo de ejemplo tomamos \textbf{CCU} y el $15$ de abril del $2020$. Para este par existen $456$ transacciones (ver Figura \ref{fig:ccu_abril}).   
+   	\begin{figure}[H]
+   		\centering
+   		\includegraphics[scale=.5]{imgs/ccu_abril.png}
+   		\caption{Muestra de tamaño $5$ de las transacciones asociadas a \textbf{CCU} el 15 de abril del $2020$.}
+   		\label{fig:ccu_abril}
+   	\end{figure}
+   	Se decide calcular el precio del día como un promedio de \textit{Precios} ponderando por \textit{MontoPesos}.
+    \begin{align*}
+        X_t = \sum_{i\in I} P(i)_t w(i)
+    \end{align*}
+
+
+    donde $w(i)$ es un peso que representa la capitalización de cada instrumento y es invariante 
+    con respecto a $t$.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=.25]{imgs/ipsa_replication.png}
+		\caption{Replicación del ipsa.}
+		\label{fig:ipsa_replication}
+	\end{figure}
 
 
 
