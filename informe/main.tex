@@ -1,12 +1,53 @@
 \documentclass{article}
 \input{setup.tex}
 \begin{document}
-\section{Introducción}
+%%%
+% Sacar el último plot. ASD
+% Rellenar las otras partes. ASD
+% Terminar el uml se forma simple.
+% Crear una portada.
+
+
+%%% Portada %%%
+\begin{titlepage}
+	\centering
+	{\bfseries\LARGE Universidad De Chile \par}
+	\vspace{1cm}
+	{\scshape\Large Facultad de Ciencias Físicas y Matemáticas \par}
+	\vspace{3cm}
+	{\scshape\Huge Práctica II \par}
+	\vfill
+	{\Large Alumno: Javier Castro Medina\par}
+	{\Large Empresa: LVA índices\par}
+	{\Large Supervisor: Victor Carmi, Gerente de Investigación \par}
+	{\Large Periodo: Enero y Febrero 2021\par}
+	\vfill
+	{\Large Abril 2021 \par}
+\end{titlepage}
+%%% Portada %%%
+\newpage
+%%%%
+\section{Resumenes}
+\subsection{Práctica I}
+	La primera práctica se llevó acabo en la empresa dedicada a la entrega de información financiera, LVA índices. Parte importante del trabajo aquí realizado fue hacer análisis de datos y programación de un algoritmo en \texttt{Python} que llevara a cabo el análisis pertinente y entregara la información pedida. Tuvo principalmente dos faces, la primera dedicada al estudio de conceptos necesarios para entender la problemática financiera y traducirla en un problema matemático para el cuál era necesario la creación de un modelo. La segunda fue dedicada a llevar a cabo el modelo en un programa computacional fácil de utilizar.
+\subsection{Práctica II}
+	Esta práctica, la segunda, se realiza en la misma empresa y el trabajo principal fue entender, trabajar y confeccionar índices financieros. La primera parte de la práctica se dedicó a calcular el IPSA (índice económico chileno que se define más adelante) usando las bases de datos de LVA. Luego, se confecciona un índice original usando datos de Twitter. Estos datos corresponden a \textit{tweets} hechos por personas en Chile con respecto a empresas también chilenas. El modelo detrás del índice resulta simple en la teoría, la mayor parte del tiempo se usó en la programación de este y en la solución de problemas que fueron surgiendo a medida se avanzaba en la implementación.
+\section{Contexto}
+	LVA índices es una empresa dedicada a entregar asesorías e información financiera, servicios de valorización a carteras de inversión, reportes para ser entregados a entes reguladores y cálculo de índices económicos entre otras cosas. La práctica se desarrollo en el área de investigación, dedicada al trabajo en análisis de datos mediante estadística y poder computacional para lograr generar reportes como los antes mencionados. Cabe señalar que se desarrolló en modalidad tele-trabajo a través de la plataforma \texttt{Discord}. La problemática es la necesidad de obtener otras formas de medir la economía chilena usando la gran cantidad de datos que se generan en la redes sociales. Se busca usar la opinión de las personas sobre empresas para confeccionar un índice económico.
 
 \section{Objetivos y Metodología}
-    Se propone una investigación enfocada en estudiar y evaluar la aplicación del \comillas{Procesamiento de lenguaje natural}
-    o NLP por su sigla en inglés para construir un índice económico.
-
+	El primer objetivo de esta práctica es seguir ganado experiencia laboral como también adquiriendo habilidades blandas que permitan un desarrollo satisfactorio en la comunidad de trabajo. En particular esta práctica se caracteriza por el objetivo de aprender a trabajar en forma remota desde la casa. La idea es lograr una comunicación fluida con el equipo de trabajo y el supervisor, cosa que en modo presencial se daba de forma directa.\\
+	\newpage
+	Por el lado técnico, se busca aprender sobre procesamiento de lenguaje natural (NLP por sus siglas en inglés), librerías que permitan trabajar con NLP, librerías dedicadas a trabajar con Twitter y habilidades de programación en general. También, dado que el trabajo fue realizado en forma remota, la programación se llevó a cabo con herramientas que permiten escribir código de forma colaborativa en tiempo real. Esto motiva el objetivo de lograr una coordinación aún mayor con el equipo de trabajo.\\
+	
+	A continuación se listan, a grandes rasgos, los hitos alcanzados en el proceso:
+	\begin{itemize}
+		\item Replicación del IPSA.
+		\item Familiarización con librerías para el análisis de sentimientos y obtención de datos de Twitter.
+		\item Creación de índice económico usando las herramientas del paso anterior.
+	\end{itemize}
+	Por orto lado, dadas las circunstancias, se busca lograr sobrellevar el tele-trabajo en tiempos de pandemia. Finalmente, las herramientas principales necesarias para esta práctica fueron el análisis de datos, la estadística y la modelación de problemas.
+\newpage
 \section{Desarrollo}
     Lo primero es definir y entender para que sirve un índice económico, desde ahora simplemente \comillas{índice}. Este se puede definir como un indicador estadístico asociado a un conjunto de instrumentos financieros, en este trabajo sólo se consideran bonos y acciones, matemáticamente hablando corresponde a una serie de tiempo $(X_t)_{t=1}^{N}$ típicamente indexada por día. También, se suele llamar índice al conjunto de instrumentos seleccionados para su construcción. El cálculo del índice se puede hacer de varias formas dependiendo de la naturaleza de los instrumentos que lo componen, generalmente se hace uso de un promedio ponderado de los precios de los instrumentos en el índice. Por ejemplo, suponiendo un conjunto $I$ de instrumentos financieros, claramente finito, podemos computar el valor de nuestro índice al día $t$ como:
     \begin{align*}
@@ -14,87 +55,126 @@
     \end{align*}
    	Donde $P(i)$ corresponde a la serie de precios del instrumento $i$. Este tipo de índices se usan como indicadores de que tan fructífera ha sido la economía, una subida en este valor se puede entender como un alza en los precios y por lo tanto, un \comillas{alza del sector económico} y viceversa. Uno de los índices más importantes es el \textbf{S\&}\textbf{P 500} de Estados Unidos, país que al ser potencia influye en la economía del resto del mundo, de ahí su importancia. Este índice se compone de $500$ acciones o empresas las cuales cotizan en la primera y segunda bolsa de valores más importantes de EE.UU, la de Nueva York o NYSE (New York Stock Exchange) y NASDAQ (National Association of Securities Dealers Automated Quotation), ubicada en la misma ciudad, correspondientemente. En el caso de Chile, existe el \textbf{IPSA} o Índice de Precio Selectivo de Acciones, este agrupa las $30$ acciones con mayor presencia bursátil en el mercado y es reajustado cada año haciendo entrar y salir acciones.
 \subsection{Replicación IPSA}
-   	La primera parte del trabajo realizado se basó en estimar el valor del \textbf{IPSA} con los datos disponibles. La información entregada por \textbf{LVA} corresponde a los datos de transacciones diarias en la Bolsa de Santiago, agrupados por mes en distintos archivos. Estos datos se ven como se muestra en la Figura \ref{fig:trans}.
-   	\begin{figure}[H]
-   		\centering
-   		\includegraphics[scale=.5]{imgs/transacciones_RV_data.png}
-   		\caption{Muestra de tamaño $5$ de datos disponibles para estimación del IPSA, transacciones en la bolsa durante enero $2020$.}
-   		\label{fig:trans}
-   	\end{figure}
-   \begin{remark}
-   	La mayoría de los datos financieros no incluyen fechas que correspondan a fines de semana o festivos. Esto se debe a que las instituciones que generan o recolectan estos datos no trabajan en tales días.
-   \end{remark}
-   	En la Figura \ref{fig:trans}, la columna \textit{Folio} identifica unívocamente a cada transacción, \textit{Precio} indica el precio al cual se transó,  \textit{Cantidad} la cantidad de acciones transadas, \textit{MontoPesos} corresponde a la multiplicación de las dos anteriores y \textit{Nemo} es la etiqueta que se le da a la acción en la bolsa, generalmente corresponde al nombre de la empresa que emite la acción. Algunos de estos Nemos son: BSANTANDER, FALABELLA y ENELCHILE, por ejemplo. El resto de las columnas no será relevante para este estudio.\\
-   	Posteriormente, el valor del IPSA, $(X_t)_t$, lo aproximamos con la siguiente fórmula,
+   	La primera parte del trabajo realizado se basó en estimar el valor del \textbf{IPSA} con los datos disponibles. La información entregada por LVA corresponde a los datos de transacciones diarias en la Bolsa de Santiago, agrupados por mes en distintos archivos. Estos datos se ven como se muestra en la Figura \ref{fig:trans}.
+   	%%%%% figura sacada 
+   %\begin{remark}
+   	%La mayoría de los datos financieros no incluyen fechas que correspondan a fines de semana o festivos. Esto se debe a que las instituciones que generan o recolectan estos datos no trabajan en tales días.
+   %\end{remark}
+   	En la Figura \ref{fig:trans}, la columna \textit{Folio} identifica unívocamente a cada transacción, \textit{Precio} indica el precio al cual se transó,  \textit{Cantidad} la cantidad de acciones transadas, \textit{MontoPesos} corresponde a la multiplicación de las dos anteriores y \textit{Nemo} es la etiqueta que se le da a la acción en la bolsa, generalmente corresponde al nombre de la empresa que emite la acción. Algunos de estos Nemos son: BSANTANDER, FALABELLA y ENELCHILE, por ejemplo. El resto de las columnas no será relevante para este estudio. Posteriormente, el valor del IPSA, $(X_t)_t$, lo aproximamos con la siguiente fórmula,
    	\begin{align}
    		\label{eq:ipsa1}
-		X_t = base*\sum_{i\in I} w_i P(i)_t\\
-		\label{eq:ipsa2}
-		w_i = \frac{C_i}{\sum_{i\in I} C_ip(i)_0}
+		X_t = base*\sum_{i\in I} w_i P(i)_t, \hspace{.5cm}
+		w_i = \frac{C_i}{\sum_{i\in I} C_ip(i)_0}.
    	\end{align}
    donde $I$ es el conjunto de instrumentos que componen el IPSA el año $2020$ \footnote{\href{https://www.rankia.cl/blog/analisis-ipsa/3229498-que-empresas-forman-parte-ipsa-2021}{Lista de empresas componentes del IPSA $2020$ y $2021$.}}, $t$ hace referencia a días, $P(i)$ es la serie de precios diarios del instrumento $i$, $base$ corresponde al valor que se le quiera dar a la serie en tiempo inicial y $C_i$ es el número de acciones suscritas pagadas del instrumento $i$. Este último término se define como la parte de las acciones disponibles para la venta, y por ende para la obtención de fondos por parte de la empresa o sociedad que las emite, que efectivamente han sido suscritas y pagadas. En otras palabras, nos habla del tamaño de cada emisor en el mercado bursátil chileno.\\
-   Por otra parte, notar que los \comillas{pesos} $w_i$ no suman $1$, sino que son tales que $X_0=base$. La Fórmula \ref{eq:ipsa1} no es la forma exacta del IPSA, esta busca aproximar el valor real usando los datos entregados por \textbf{LVA}.
-   	\begin{remark}
-   		El análisis no estuvo exento de daños en los datos. Las primeras aproximaciones al IPSA se caracterizaban por \textit{peaks} severamente pronunciados o fechas en las cuales los valores obtenidos simplemente no tenían sentido. Estos problemas se deben a que en el caso de no tener el dato, este era sustituido por $-1000$ y además, existe un rango de fechas, específicamente en el mes de marzo del $2020$, en las cuales los datos no fueron recolectados correctamente (ver Figura \ref{fig:danados}). Esta situación fue confirmada por el supervisor y se decide simplemente eliminar estas filas problemáticas. 
-   		
-   		\begin{figure}[H]
-   			\centering
-   			\includegraphics[scale=.5]{imgs/muestra_danada.png}
-   			\caption{Muestra de datos dañados. Podemos ver los $-1000$ y que, por ejemplo, en la fila del $18$ de marzo del $2020$ la columna \textit{MontoPesos} claramente no corresponde a la multiplicación entre \textit{Cantidad} y \textit{Precio}.}
-   			\label{fig:danados}
-   		\end{figure}
-   		
-   	\end{remark}
+   Por otra parte, notar que los \comillas{pesos} $w_i$ no suman $1$, sino que son tales que $X_0=base$. La Fórmula \ref{eq:ipsa1} no es la forma exacta del IPSA, esta busca aproximar el valor real usando los datos entregados por LVA.
+   	
    	
    	Lo primero que se necesita es estimar el precio de una acción en un día cualquiera. Para esto nos fijamos en una acción (o Nemo) y fecha cualquiera, a modo de ejemplo tomamos \textbf{CCU} y el $15$ de abril del $2020$. Para este par existen $456$ transacciones (ver Figura \ref{fig:ccu_abril}).   
-   	\begin{figure}[H]
-   		\centering
-   		\includegraphics[scale=.5]{imgs/ccu_abril.png}
-   		\caption{Muestra de tamaño $5$ de las transacciones asociadas a \textbf{CCU} el 15 de abril del $2020$.}
-   		\label{fig:ccu_abril}
-   	\end{figure}
+   	%%% figura sacada
    	Se decide calcular el precio del día como un promedio de los valores \textit{Precio} ponderando por los \textit{MontoPesos}. Es decir, para un instrumento $i$,
    	\begin{align*}
    		P(i)_t = \frac{1}{\sum_{k\in T(i,t)} MontoPesos_k}\sum_{k\in T(i,t)} Precio_k * MontoPesos_k
    	\end{align*}
  	donde $T(i,t)$ son las transacciones del instrumento $i$ en el día $t$. Lo anterior nos entrega una estimación del precio del día. Por otro lado, la cantidad de acciones suscritas pagadas la obtenemos de la página web de la \textit{Bolsa de Santiago} \footnote{\href{https://www.bolsadesantiago.com/}{Bolsa de Santiago.}}. Finalmente, en la Figura \ref{fig:ipsa_replication} se expone el resultado de este procedimiento.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=.5]{imgs/ipsa_replication.png}
-		\caption{Replicación del IPSA.}
-		\label{fig:ipsa_replication}
-	\end{figure}
+	%%% figura sacada
 	La curva estimada captura bastante bien el comportamiento de la real, las subidas y bajadas del \textbf{IPSA} son logradas con buenos resultados. No obstante, es evidente el desfase que desde aproximadamente mediados de marzo comienza a hacerse notar y sigue la misma tendencia durante todo el periodo restante. Esta desviación se adjudica a la cantidad de datos dañados durante el periodo mencionado, ocasionando la recta horizontal en el punto donde el desfase comienza a hacerse más notorio. Por otro lado, es clara a la vista la caída que sufre el índice, tanto el real como el estimado, durante el mes de marzo. Esto refleja el esperado retroceso económico generado por la pandemia y no solamente en índices nacionales, la mayoría de los indicadores económicos mundiales sufrieron una caída similar.
 
-\subsection{Monto óptimo}
-	La segunda tarea requerida puede entenderse de forma independiente al objetivo principal de la práctica. Se cuenta con dos fuentes de datos, la primera es relativa a fondos mutuos y cada fila de esta tabla se interpreta como inversiones que realizan los distintos fondos en ciertas acciones y bonos (ver Figura \ref{fig:ffmm_data_sample}). La segunda corresponde a las transacciones que se realizan en la bolsa y da cuenta de cómo se mueve el mercado bursátil (ver Figura \ref{fig:trans}).
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=.65]{imgs/ffmm_data_sample.png}
-		\caption{Muestra de tamaño $5$ de los datos de fondos mutuos.}
-		\label{fig:ffmm_data_sample}
-	\end{figure}
-	Se busca generar un gráfico donde $x$ e $y$ representan la cantidad de transacciones e inversiones respectivamente que cumplan cierto criterio parametrizado por un monto $m$. Para el eje $Y$,  se agrupa la data de FFMM por run y luego por nemo para después sumar la columna \comillas{ValorizadoCLP} que tengan igual nemo dentro de cada grupo con el mismo run. Luego, dado un monto $m$, se cuenta la cantidad de inversiones resultantes (o intrumentos/nemos) tales que su monto sea menor a $m$ obteniendo un número $y$. Por otro lado, para el eje $X$, se agrupa la data por día y luego por nemo para despúes contar las inversiones que tengan igual nemo dentro de cada fecha. Después, para cada día se calcula la cantidad de transacciones que superen el monto $m$ para finalmente promediar este valor sobre un rango de días obteniendo la coordenada $x$.
+%\subsection{Monto óptimo}
+	%La segunda tarea requerida puede entenderse de forma independiente al objetivo principal de la práctica. Se cuenta con dos fuentes de datos, la primera es relativa a fondos mutuos y cada fila de esta tabla se interpreta como inversiones que realizan los distintos fondos en ciertas acciones y bonos (ver Figura \ref{fig:ffmm_data_sample}). La segunda corresponde a las transacciones que se realizan en la bolsa y da cuenta de cómo se mueve el mercado bursátil (ver Figura \ref{fig:trans}).
+	%\begin{figure}[H]
+	%	\centering
+	%	\includegraphics[scale=.65]{imgs/ffmm_data_sample.png}
+	%	\caption{Muestra de tamaño $5$ de los datos de fondos mutuos.}
+	%	\label{fig:ffmm_data_sample}
+	%\end{figure}
+	%Se busca generar un gráfico donde $x$ e $y$ representan la cantidad de transacciones e inversiones respectivamente que cumplan cierto criterio parametrizado por un monto $m$. Para el eje $Y$,  se agrupa la data de FFMM por run y luego por nemo para después sumar la columna \comillas{ValorizadoCLP} que tengan igual nemo dentro de cada grupo con el mismo run. Luego, dado un monto $m$, se cuenta la cantidad de inversiones resultantes (o intrumentos/nemos) tales que su monto sea menor a $m$ obteniendo un número $y$. Por otro lado, para el eje $X$, se agrupa la data por día y luego por nemo para despúes contar las inversiones que tengan igual nemo dentro de cada fecha. Después, para cada día se calcula la cantidad de transacciones que superen el monto $m$ para finalmente promediar este valor sobre un rango de días obteniendo la coordenada $x$.
 \subsection{Datos de Twitter}
 %En esta subsección se explicará el proceso de obtención de datos de Twitter y se muestra un pequeño análisis
 Necesitamos analizar texto que represente una crítica o reseña sobre una compañía. Estos textos vendrán en forma de \textit{tweets} y queremos que hayan sido creados en cierto rango de fechas y que tengan ciertas palabras claves. Se investigaron variadas formas de hacer esto en \texttt{Python} pero se prefirió la librería \texttt{twint}\footnote{\href{https://github.com/twintproject/twint}{Repositorio de twint.}} dada su facilidad de uso y porque cuenta con la opción de manejar los tweets con DataFrames de \texttt{pandas}. Para obtener tweets con esta librería se debe especificar un intervalo de fechas y una request, esto último consiste en palabras claves o ciertas características que deban cumplir los tweets a buscar, ver Figura \ref{fig:twint_example}.
+%Figura sacada
+Se procede entonces a obtener tweets relativos a cada nemo o empresa del IPSA durante el periodo del $28$ de febrero del $2020$ y el $30$ de diciembre del mismo año, cabe señalar que esto tomó una cantidad de tiempo considerable obteniendo aproximadamente $1$\texttt{GB} de datos en archivos \texttt{.csv}. Se decide que la request para cada nemo sea de la forma \comillas{[cuenta(s) de la empresa] -from [cuenta(s) de la empresa]}, esto quiere decir que twint buscará tweets que etiqueten a la empresa en cuestión, con la idea de buscar reseñas o opiniones sobre esta, pero no buscará tweets que vengan de la empresa, esto para evitar posibles sesgos que vengan de la compañía.
+
+%% figura sacada
+La Figura \ref{fig:volume_tweets_agg} nos confirma que las empresas de retail, bancos, compañías de energía y agua son las más mencionadas en Twitter. Por el lado de las compañías de servicios básicos, cada vez que sucede un corte de agua o luz, las cuentas de estas empresas son mencionadas aumentando su volumen de tweets. Los bancos por otro lado, mantienen cuentas de tipo servicio al cliente y por lo tanto son constantemente mencionadas, tanto para dar críticas como para realmente preguntar por sus servicios. Finalmente, el caso del retail lo tenemos representado en gran parte por Falabella, esta es una de las compañías más grande en Chile (confirmado en parte por la Figura \ref{fig:volume_tweets_agg}) y además, debido a la pandemia, han aumentado la cantidad de compras online aumentando a su vez su presencia en redes sociales.
+%% dos figuras sacadas
+
+En las Figuras \ref{fig:falabella_volume} y \ref{fig:google_trend_compra_online} se observa el comportamiento sugerido anteriormente, la presencia de Falabella en Twitter comienza a crecer durante los meses de marzo y abril, meses que coinciden con el inicio de la pandemia y además, como es de esperarse, el término \comillas{comprar online} aumenta su popularidad durante mismo periodo.
+
+
+
+\subsection{Análisis de sentimiento}
+El análisis de sentimientos corresponde a una parte del \textbf{NLP} (Natural Language Processing), la tarea de este es asignar a un trozo de texto un número que indique el puntaje del texto en cada sentimiento, esto son: negativo, neutro y positivo. La primera dificultad es que la mayoría de las librerías utilizadas para esta tarea están hechas para analizar textos en inglés, al investigar la existencia de análogos en español, se llega a la librería \texttt{pysentimiento}, ver Figura \ref{fig:pysentimiento_example}.\\
+% figura sacada
+\subsection{Creación del índice de Twitter}
+En esta subsección se mezclan las herramientas de las partes anteriores para implementar un programa que obtenga tweets asociados a cada nemo, analice sus sentimientos y maneje toda la información con DataFrames de \texttt{pandas}. A grandes rásgos, la lógica del código se hizo en base a una jerarquía de clases simple, esta consiste en una clase madre \texttt{Instrument} que representa un instrumento financiero genérico y clases \texttt{InstrumentRV} e \texttt{InstrumentRF} que heredan de la anterior y representan respectivamente a acciones y bonos.
+%% figura sacada
+El input del programa consiste en un diccionario, digamos \texttt{dict}, tal que \texttt{dict[\comillas{RV}]} y \texttt{dict[\comillas{RF}]} entreguen, correspondientemente, la lista de nemos de acciones y bonos considerados para trabajar en el índice. Idealmente este diccionario guarda todos los instrumentos del mercado chileno, pero dado que no todos estos tienen presencia destacable en redes sociales, se trabaja sólo con un subconjunto del total de instrumentos. Las acciones consideradas son un subconjunto de las acciones que conforman el IPSA y los bonos son los que tienen registro en las bases de datos de LVA y que sean emitidos por compañías con presencia destacable en twitter. Lo anterior conlleva que datos asociados a una empresa correspondan a instrumentos distintos. Para solucionar este enredo se crea un diccionario auxiliar que relaciona cada emisor de bonos a una lista de nemos que este emite, luego, se recorre el diccionario de emisores creando los objetos correspondiente como \texttt{InstrumentRF(nemo, emisor)}. El caso de las acciones es más simple dado que, por lo menos en este contexto, hay una relación uno a uno entre empresas y nemos de acciones. En esta parte del programa se cuenta con una lista de objetos tipo \texttt{Instrument} a los cuales se les \comillas{setean} sus datos con el método \texttt{setData()}. Dado que por cada día se tienen varios tweets, el valor de las columnas neg, neu y pos en el dataframe de la Figura \ref{fig:instrument_sentiment_sample} corresponden al promedio de estos valores en los tweets del día.\\
+%% dos figuras sacadas
+La Figura \ref{fig:mean_score_bar} nos ratifica la sospecha que se tenía desde un principio y es que la mayoría de los tweets tienen carácter negativo con un score mayor a $0.5$. Esto se explica en parte por el carácter de \comillas{reclamo} que tiene la red social Twitter, siendo la mayoría de los tweets mencionando a empresas un reclamo sobre algún servicio de estas.\\
+
+El índice de Twitter, digamos $TI$ (Twitter index), se irá calculando diariamente, es decir, cada día se necesita un conjunto de acciones $I_d$ seleccionadas con algún criterio de un universo de acciones $I$, los precios de estas $(P_{d,i})_{i\in I_d}$ y pesos $(W_{d,i})_{i\in I_d}$. Luego, de forma natural el valor del índice se escribe como:
+\begin{align}
+	TI_d = \sum_{i\in I_d} P_{d,i} W_{d,i}.
+\end{align}
+Consideremos números naturales positivos \texttt{rebalanceStep}, \texttt{rankStep} y \texttt{topAcc} como hiperparámetros fijos. El universo de acciones $I$ serán las acciones del IPSA con presencia considerable en Twitter (ver Figura \ref{fig:volume_tweets_agg}). Para el criterio y fecha de selección se decide que cada \texttt{rebalanceStep} días se cambiará el conjunto $I_d$ (a este día de cambio de le dirá rebalanceo) de la siguiente forma, dado un día de rebalanceo $d$, tomar \texttt{rankStep} días hacia el pasado y calcular, para cada $i\in I$: 
+\begin{align*}\label{eq:rank}
+	R(i, d) = \frac{S_d - S_{d-rankStep}}{|S_d|}.
+\end{align*}
+Donde $S_d$ es el score de algún sentimiento al día $d$ o cualquier otro parámetro que se pueda obtener como función de estos. Luego, se seleccionarán las \texttt{topAcc} con $R(i,d)$ más alto para conformar el índice los siguientes \texttt{rebalanceStep} días. La razón de utilizar $R(i,d)$ es que nos dice, sin importar el signo de $S_d$ y $S_{d-rankStep}$, en cuanto a aumentado o disminuido este puntaje en el rango de días $[S_d, S_{d-rankStep}]$. En la Figura \ref{fig:twitter_index} se muestra el resultado final del trabajo.
+%%%%%%%%%%%%%%%%%% END DOCUMENT %%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Conclusiones}
+Se logran en su totalidad los objetivos relacionados con habilidades blandas, si bien en un principio se hizo difícil la comunicación y sincronía en el equipo, a medida que pasaba el tiempo se fueron superando estas dificultades por la simple razón de que el grupo se iba conociendo y todo se hacía más fluido. El uso de herramientas cómo pizarras colaborativas fueron de gran importancia para la comunicación.\\
+
+Se adquiere un bagaje cultural no despreciable en torno al mundo de los índices económicos. Se logra una comprensión básica con respecto al NLP dado que no fue necesario profundizar demasiado, bastó dominar la librería \texttt{pysentimiento} y siguiendo la misma línea, también se adquiere el dominio necesario de \texttt{twint}.\\
+
+Del estudio realizado sobre los datos en Twitter, se deduce que la cantidad de datos no estará distribuida en forma uniforme sobre las distintas empresas consideradas, esto siguiere la posibilidad de realizar estudios de otra índole en estos datos, de popularidad por ejemplo. Es por lo anterior que los resultados obtenidos son confiables solamente cuando se trabaja con el conjunto de empresas que tienen presencia relativamente alta en Twitter, siendo este conjunto de tamaño $\approx 10$. Resulta desalentador para la investigación que se realizó porque típicamente los índices se componen de entre $40$ y $500$ compañías. Es común encontrar estudios como el reportado en este informe sobre compañías estadounidenses, en ese caso es distinto porque las empresas de ese país son conocidas mundialmente logrando una alta presencia en redes sociales. Por otro lado, resulta complicado el análisis mixto entre bonos y acciones, esto porque generalmente las empresas que emiten bonos también poseen acciones y entonces es casi imposible diferenciar entre los tweets de la empresa que hablan del bono y los que hablan de la acción. Generalmente los comentarios en Twitter no poseen ese nivel de especificidad. Por esto, el estudio de vuelve más una comparación entre la percepción que tiene la comunidad de Twitter sobre empresas del mercado chileno y usar esto para crear un ranking.\\
+
+La librería \texttt{pysentimiento} hace uso del modelo \texttt{BETO} que es la versión en español de \texttt{BERT}. Este mecanismo que analiza el sentimiento de los tweets se transforma en una \comillas{caja negra}, no se tiene control sobre cómo y con qué fue entrenado este modelo resultando en una debilidad del estudio. Una posible extensión y mejora de los resultados se podría dar incluyendo datos de otras redes sociales o herramientas tipo Google trends que ayuden a opacar el poco control del análisis de sentimientos.
+
+
+
+\newpage
+\section{Anexos}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.5]{imgs/transacciones_RV_data.png}
+	\caption{Muestra de tamaño $5$ de datos disponibles para estimación del IPSA, transacciones en la bolsa durante enero $2020$.}
+	\label{fig:trans}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.5]{imgs/muestra_danada.png}
+	\caption{Muestra de tamaño $5$ que muestra datos dañados. Las primeras aproximaciones al IPSA se caracterizaban por \textit{peaks} severamente pronunciados o fechas en las cuales los valores obtenidos simplemente no tenían sentido. Estos problemas se deben a que en el caso de no tener el dato, este era sustituido por $-1000$ y además, existe un rango de fechas, específicamente en el mes de marzo del $2020$, en las cuales los datos no fueron recolectados correctamente. Esta situación fue confirmada por el supervisor y se decide simplemente eliminar estas filas problemáticas.}
+	\label{fig:danados}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.5]{imgs/ccu_abril.png}
+	\caption{Muestra de tamaño $5$ de las transacciones asociadas a \textbf{CCU} el 15 de abril del $2020$.}
+	\label{fig:ccu_abril}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.5]{imgs/ipsa_replication.png}
+	\caption{Replicación del IPSA.}
+	\label{fig:ipsa_replication}
+\end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.65]{imgs/twint_example.png}
 	\caption{Muestra de tamaño $3$ de \textit{tweets} obtenidos con \texttt{twint} con la request \comillas{@banmedica -from:banmedica}, esto significa que \texttt{twint} buscará tweets que etiqueten a Banmedica y que no vengan de la misma cuenta de Banmedica, más adelante se justificará esta request. La librería nos entrega un DataFrame con más columnas pero estas no fueron consideradas en este análisis.}
 	\label{fig:twint_example}
 \end{figure}
-Se procede entonces a obtener tweets relativos a cada nemo o empresa del IPSA durante el periodo del $28$ de febrero del $2020$ y el $30$ de diciembre del mismo año, cabe señalar que esto tomó una cantidad de tiempo considerable obteniendo aproximadamente $1$\texttt{GB} de datos en archivos \texttt{.csv}. Se decide que la request para cada nemo sea de la forma \comillas{[cuenta(s) de la empresa] -from [cuenta(s) de la empresa]}, esto quiere decir que twint buscará tweets que etiqueten a la empresa en cuestión, con la idea de buscar reseñas o opiniones sobre esta, pero no buscará tweets que vengan de la empresa, esto para evitar posibles sesgos que vengan de la compañía.
-\begin{remark}
-Dado que algunas de las empresas asociadas a los nemos tenían una presencia relativamente baja en twitter, se decide por eliminarlas y trabajar solamente con las empresas cuyo promedio de tweets diarios sea mayor a $10$. El haber o no eliminado estos nemos no tiene efecto en el resultado final, veremos que las empresas escogidas para entrar al índice son siempre del grupo que tiene mayor presencia en la red social.
-\end{remark}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.38]{imgs/volume_tweets_agg.png}
-	\caption{Promedio de tweets diarios relativos a las empresas con mayor presencia en la red social}
+	\caption{
+	Dado que algunas de las empresas asociadas a los nemos tenían una presencia relativamente baja en twitter, se decide por eliminarlas y trabajar solamente con las empresas cuyo promedio de tweets diarios sea mayor a $10$. El haber o no eliminado estos nemos no tiene efecto en el resultado final, se observa que las empresas escogidas para entrar al índice son siempre del grupo que tiene mayor presencia en la red social.}
 	\label{fig:volume_tweets_agg}
 \end{figure}
-La Figura \ref{fig:volume_tweets_agg} nos confirma que las empresas de retail, bancos, compañías de energía y agua son las más mencionadas en Twitter. Por el lado de las compañías de servicios básicos, cada vez que sucede un corte de agua o luz, las cuentas de estas empresas son mencionadas aumentando su volumen de tweets. Los bancos por otro lado, mantienen cuentas de tipo servicio al cliente y por lo tanto son constantemente mencionadas, tanto para dar críticas como para realmente preguntar por sus servicios. Finalmente, el caso del retail lo tenemos representado en gran parte por Falabella, esta es una de las compañías más grande en Chile (confirmado en parte por la Figura \ref{fig:volume_tweets_agg}) y además, debido a la pandemia, han aumentado la cantidad de compras online aumentando a su vez su presencia en redes sociales.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.55]{imgs/falabella_volume.png}
@@ -107,14 +187,6 @@ La Figura \ref{fig:volume_tweets_agg} nos confirma que las empresas de retail, b
 	\caption{Popularidad del término de búsqueda \comillas{comprar online} en \href{https://trends.google.es/trends/?geo=CL}{Google trends} en Chile. Google define la popularidad como \comillas{el interés de búsqueda en relación con el valor máximo de un gráfico en una región y un periodo determinados}}
 	\label{fig:google_trend_compra_online}
 \end{figure}
-
-
-En las Figuras \ref{fig:falabella_volume} y \ref{fig:google_trend_compra_online} se observa el comportamiento sugerido anteriormente, la presencia de Falabella en Twitter comienza a crecer durante los meses de marzo y abril, meses que coinciden con el inicio de la pandemia y además, como es de esperarse, el término \comillas{comprar online} aumenta su popularidad durante mismo periodo.
-
-
-
-\subsection{Análisis de sentimiento}
-El análisis de sentimientos corresponde a una parte del \textbf{NLP} (Natural Language Processing), la tarea de este es asignar a un trozo de texto un número que indique el puntaje del texto en cada sentimiento, esto son: negativo, neutro y positivo. La primera dificultad es que la mayoría de las librerías utilizadas para esta tarea están hechas para analizar textos en inglés, al investigar la existencia de análogos en español, se llega a la librería \texttt{pysentimiento}, ver Figura \ref{fig:pysentimiento_example}.\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.65]{imgs/pysentimiento_example.png}
@@ -123,52 +195,30 @@ El análisis de sentimientos corresponde a una parte del \textbf{NLP} (Natural L
 	\caption{Ejemplos de uso de la librería \texttt{pysentimiento}.}
 	\label{fig:pysentimiento_example}
 \end{figure}
-\subsection{Creación del índice}
-En esta subsección se mezclan las herramientas de las partes anteriores para implementar un programa que obtenga tweets asociados a cada nemo, analice sus sentimientos y maneje toda la información con DataFrames de \texttt{pandas}. A grandes rásgos, la lógica del código se hizo en base a una jerarquía de clases simple, esta consiste en una clase madre \texttt{Instrument} que representa un instrumento financiero genérico y clases \texttt{InstrumentRV} e \texttt{InstrumentRF} que heredan de la anterior y representan respectivamente a acciones y bonos. El tratamiento de bonos resulta un poco más complicado y será reportado más adelante en el informe. 
 \begin{figure}[H]
 	\centering
-	%\input{myUml}
+	\input{myUml}
 	\caption{Resumen diagrama UML del código.}
 	\label{fig:uml}
 \end{figure}
-El input del programa consiste en un diccionario, digamos \texttt{dict}, tal que \texttt{dict[\comillas{RV}]} y \texttt{dict[\comillas{RF}]} entreguen, correspondientemente, la lista de nemos de acciones y bonos considerados para trabajar en el índice. Idealmente este diccionario guarda todos los instrumentos del mercado chileno, pero dado que no todos estos tienen presencia destacable en redes sociales, se trabaja sólo con un subconjunto del total de instrumentos. Las acciones consideradas son un subconjunto de las acciones que conforman el IPSA y los bonos son los que tienen registro en las bases de datos de LVA y que sean emitidos por compañías con presencia destacable en twitter, esto último hace que existan empresas relacionadas tanto a bonos como acciones y nemos de bonos asociados a la misma empresa. Para solucionar este enredo se crea un diccionario auxiliar que relaciona cada emisor de bonos a una lista de nemos que este emite, luego, se recorre el diccionario de emisores creando los objetos correspondiente como \texttt{InstrumentRF(nemo, emisor)}. El caso de las acciones es más simple dado que, por lo menos en este contexto, hay una relación uno a uno entre empresas y nemos de acciones. En esta parte del programa se cuenta con una lista de objetos tipo \texttt{Instrument} a los cuales se les \comillas{setean} sus datos con el método \texttt{setData()}. Dado que por cada día se tienen varios tweets, el valor de las columnas neg, neu y pos en el dataframe de la Figura \ref{fig:instrument_sentiment_sample} corresponde al promedio de estos valores en los tweets del día.\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.65]{imgs/instrument_sentiment_sample.png}
 	\caption{Dataframe asociado al \texttt{InstrumentRV} que representa a COPEC.}
 	\label{fig:instrument_sentiment_sample}
 \end{figure}
-
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.45]{imgs/mean_score_bar.png}
 	\caption{Promedio de los score en cada sentimiento para las acciones con mayor presencia en Twitter.}
 	\label{fig:mean_score_bar}
 \end{figure}
-
-La Figura \ref{fig:mean_score_bar} nos ratifica la sospecha que se tenía desde un principio y es que la mayoría de los tweets tienen carácter negativo con un score mayor a $0.5$.
-%%%%%%%%%%%%%%%%%% END DOCUMENT %%%%%%%%%%%%%%%%%%
-
-
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.55]{imgs/twitter_index.png}
+	\caption{Índice construido con parámetros: $\texttt{topAcc}=7$, $\texttt{rankStep}=21$, $\texttt{rebalanceStep}=21$ y como sentimiento se usa el positivo. Además, se usa como valor inicial $1000$. Vemos que se logra una forma similar al IPSA lo cual implica que con la información de Twitter se puede crear un índice que no se aleja mucho de la norma.}
+	\label{fig:twitter_index}
+\end{figure}
 \newpage
-
 %\input{biblio}
-\section{Punto de que hablar}
-    \begin{enumerate}
-        \item Calculo de índices: IPSA. Explicar el cálculo del índice y por qué se calcula este tipo de indicadores.
-        \item Análisis de sentimientos con twitter: Hablar de la cantidad de data por nemo y poner gráfico de barras.
-        \item Hablar de la decisión de dejar retweets porque representan el mismo comentarios pero de otra persona.
-        \item Comentar que hay tweets en otros idiomas y por lo tanto se hizo necesario trabajar con APIs de idioma.
-        \item Series de tiempo en economía.
-        \item Correlación entre dos variables. 
-        \item Test de correlación.
-        \item Explicar el cálculo del sentimiento saturado, shifted y todo el preproceso que se le hace a los valores pos, neu y neg para transformarlos en un número representativo del sentimiento de cada tweet
-        \item Explicar que el sentimiento del día asociado a un instrumento se calcula como un promedio de los score de tweets diarios.
-        \item Explicar que se busca parámetros que maximicen la correlación entre las variables adecuadas: \textbf{retorno} del sentimiento, sentimiento promedio en el periodo \textbf{sent days}, promedio de los retornos diarios, etc contra el retorno del precio de la acción o menos la tasa de interés para el caso de bonos.
-        \item Mostrar los gráficos del índice obtenido y los nemos que participan del índice.
-    \end{enumerate}
-
-
 \end{document}

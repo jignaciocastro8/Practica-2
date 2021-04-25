@@ -20,42 +20,44 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \providecommand \oddpage@label [2]{}
 \babel@aux{english}{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introducción}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Objetivos y Metodología}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Desarrollo}{1}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Replicación IPSA}{1}{subsection.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Muestra de tamaño $5$ de datos disponibles para estimación del IPSA, transacciones en la bolsa durante enero $2020$.\relax }}{1}{figure.caption.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Resumenes}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Práctica I}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Práctica II}{1}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Contexto}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Objetivos y Metodología}{1}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Desarrollo}{3}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Replicación IPSA}{3}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:ipsa1}{{1}{3}{Replicación IPSA}{equation.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Datos de Twitter}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Análisis de sentimiento}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Creación del índice de Twitter}{5}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusiones}{6}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Anexos}{7}{section.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Muestra de tamaño $5$ de datos disponibles para estimación del IPSA, transacciones en la bolsa durante enero $2020$.\relax }}{7}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:trans}{{1}{1}{Muestra de tamaño $5$ de datos disponibles para estimación del IPSA, transacciones en la bolsa durante enero $2020$.\relax }{figure.caption.1}{}}
-\newlabel{eq:ipsa1}{{1}{2}{Replicación IPSA}{equation.3.1}{}}
-\newlabel{eq:ipsa2}{{2}{2}{Replicación IPSA}{equation.3.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Muestra de datos dañados. Podemos ver los $-1000$ y que, por ejemplo, en la fila del $18$ de marzo del $2020$ la columna \textit  {MontoPesos} claramente no corresponde a la multiplicación entre \textit  {Cantidad} y \textit  {Precio}.\relax }}{2}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:danados}{{2}{2}{Muestra de datos dañados. Podemos ver los $-1000$ y que, por ejemplo, en la fila del $18$ de marzo del $2020$ la columna \textit {MontoPesos} claramente no corresponde a la multiplicación entre \textit {Cantidad} y \textit {Precio}.\relax }{figure.caption.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Muestra de tamaño $5$ de las transacciones asociadas a \textbf  {CCU} el 15 de abril del $2020$.\relax }}{3}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:ccu_abril}{{3}{3}{Muestra de tamaño $5$ de las transacciones asociadas a \textbf {CCU} el 15 de abril del $2020$.\relax }{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Replicación del IPSA.\relax }}{3}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:ipsa_replication}{{4}{3}{Replicación del IPSA.\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Monto óptimo}{4}{subsection.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Muestra de tamaño $5$ de los datos de fondos mutuos.\relax }}{4}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:ffmm_data_sample}{{5}{4}{Muestra de tamaño $5$ de los datos de fondos mutuos.\relax }{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Datos de Twitter}{4}{subsection.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Muestra de tamaño $3$ de \textit  {tweets} obtenidos con \texttt  {twint} con la request ``@banmedica -from:banmedica'', esto significa que \texttt  {twint} buscará tweets que etiqueten a Banmedica y que no vengan de la misma cuenta de Banmedica, más adelante se justificará esta request. La librería nos entrega un DataFrame con más columnas pero estas no fueron consideradas en este análisis.\relax }}{5}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:twint_example}{{6}{5}{Muestra de tamaño $3$ de \textit {tweets} obtenidos con \texttt {twint} con la request \comillas {@banmedica -from:banmedica}, esto significa que \texttt {twint} buscará tweets que etiqueten a Banmedica y que no vengan de la misma cuenta de Banmedica, más adelante se justificará esta request. La librería nos entrega un DataFrame con más columnas pero estas no fueron consideradas en este análisis.\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Promedio de tweets diarios relativos a las empresas con mayor presencia en la red social\relax }}{5}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:volume_tweets_agg}{{7}{5}{Promedio de tweets diarios relativos a las empresas con mayor presencia en la red social\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Cantidad de tweets diarios mencionando a Falabella. Se toma un promedio móvil con ventana de $7$ días.\relax }}{6}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:falabella_volume}{{8}{6}{Cantidad de tweets diarios mencionando a Falabella. Se toma un promedio móvil con ventana de $7$ días.\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Popularidad del término de búsqueda ``comprar online'' en \href  {https://trends.google.es/trends/?geo=CL}{Google trends} en Chile. Google define la popularidad como ``el interés de búsqueda en relación con el valor máximo de un gráfico en una región y un periodo determinados''\relax }}{6}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:google_trend_compra_online}{{9}{6}{Popularidad del término de búsqueda \comillas {comprar online} en \href {https://trends.google.es/trends/?geo=CL}{Google trends} en Chile. Google define la popularidad como \comillas {el interés de búsqueda en relación con el valor máximo de un gráfico en una región y un periodo determinados}\relax }{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Análisis de sentimiento}{7}{subsection.3.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Ejemplos de uso de la librería \texttt  {pysentimiento}.\relax }}{7}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:pysentimiento_example}{{10}{7}{Ejemplos de uso de la librería \texttt {pysentimiento}.\relax }{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Creación del índice}{7}{subsection.3.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Resumen diagrama UML del código.\relax }}{7}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:uml}{{11}{7}{Resumen diagrama UML del código.\relax }{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Dataframe asociado al \texttt  {InstrumentRV} que representa a COPEC.\relax }}{8}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:instrument_sentiment_sample}{{12}{8}{Dataframe asociado al \texttt {InstrumentRV} que representa a COPEC.\relax }{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Promedio de los score en cada sentimiento para las acciones con mayor presencia en Twitter.\relax }}{8}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:mean_score_bar}{{13}{8}{Promedio de los score en cada sentimiento para las acciones con mayor presencia en Twitter.\relax }{figure.caption.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Punto de que hablar}{9}{section.4}\protected@file@percent }
-\gdef \@abspage@last{9}
+\newlabel{fig:trans}{{1}{7}{Muestra de tamaño $5$ de datos disponibles para estimación del IPSA, transacciones en la bolsa durante enero $2020$.\relax }{figure.caption.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Muestra de tamaño $5$ que muestra datos dañados. Las primeras aproximaciones al IPSA se caracterizaban por \textit  {peaks} severamente pronunciados o fechas en las cuales los valores obtenidos simplemente no tenían sentido. Estos problemas se deben a que en el caso de no tener el dato, este era sustituido por $-1000$ y además, existe un rango de fechas, específicamente en el mes de marzo del $2020$, en las cuales los datos no fueron recolectados correctamente. Esta situación fue confirmada por el supervisor y se decide simplemente eliminar estas filas problemáticas.\relax }}{7}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:danados}{{2}{7}{Muestra de tamaño $5$ que muestra datos dañados. Las primeras aproximaciones al IPSA se caracterizaban por \textit {peaks} severamente pronunciados o fechas en las cuales los valores obtenidos simplemente no tenían sentido. Estos problemas se deben a que en el caso de no tener el dato, este era sustituido por $-1000$ y además, existe un rango de fechas, específicamente en el mes de marzo del $2020$, en las cuales los datos no fueron recolectados correctamente. Esta situación fue confirmada por el supervisor y se decide simplemente eliminar estas filas problemáticas.\relax }{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Muestra de tamaño $5$ de las transacciones asociadas a \textbf  {CCU} el 15 de abril del $2020$.\relax }}{7}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:ccu_abril}{{3}{7}{Muestra de tamaño $5$ de las transacciones asociadas a \textbf {CCU} el 15 de abril del $2020$.\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Replicación del IPSA.\relax }}{8}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:ipsa_replication}{{4}{8}{Replicación del IPSA.\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Muestra de tamaño $3$ de \textit  {tweets} obtenidos con \texttt  {twint} con la request ``@banmedica -from:banmedica'', esto significa que \texttt  {twint} buscará tweets que etiqueten a Banmedica y que no vengan de la misma cuenta de Banmedica, más adelante se justificará esta request. La librería nos entrega un DataFrame con más columnas pero estas no fueron consideradas en este análisis.\relax }}{8}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:twint_example}{{5}{8}{Muestra de tamaño $3$ de \textit {tweets} obtenidos con \texttt {twint} con la request \comillas {@banmedica -from:banmedica}, esto significa que \texttt {twint} buscará tweets que etiqueten a Banmedica y que no vengan de la misma cuenta de Banmedica, más adelante se justificará esta request. La librería nos entrega un DataFrame con más columnas pero estas no fueron consideradas en este análisis.\relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  Dado que algunas de las empresas asociadas a los nemos tenían una presencia relativamente baja en twitter, se decide por eliminarlas y trabajar solamente con las empresas cuyo promedio de tweets diarios sea mayor a $10$. El haber o no eliminado estos nemos no tiene efecto en el resultado final, se observa que las empresas escogidas para entrar al índice son siempre del grupo que tiene mayor presencia en la red social.\relax }}{9}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:volume_tweets_agg}{{6}{9}{Dado que algunas de las empresas asociadas a los nemos tenían una presencia relativamente baja en twitter, se decide por eliminarlas y trabajar solamente con las empresas cuyo promedio de tweets diarios sea mayor a $10$. El haber o no eliminado estos nemos no tiene efecto en el resultado final, se observa que las empresas escogidas para entrar al índice son siempre del grupo que tiene mayor presencia en la red social.\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Cantidad de tweets diarios mencionando a Falabella. Se toma un promedio móvil con ventana de $7$ días.\relax }}{9}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:falabella_volume}{{7}{9}{Cantidad de tweets diarios mencionando a Falabella. Se toma un promedio móvil con ventana de $7$ días.\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Popularidad del término de búsqueda ``comprar online'' en \href  {https://trends.google.es/trends/?geo=CL}{Google trends} en Chile. Google define la popularidad como ``el interés de búsqueda en relación con el valor máximo de un gráfico en una región y un periodo determinados''\relax }}{10}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:google_trend_compra_online}{{8}{10}{Popularidad del término de búsqueda \comillas {comprar online} en \href {https://trends.google.es/trends/?geo=CL}{Google trends} en Chile. Google define la popularidad como \comillas {el interés de búsqueda en relación con el valor máximo de un gráfico en una región y un periodo determinados}\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Ejemplos de uso de la librería \texttt  {pysentimiento}.\relax }}{10}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:pysentimiento_example}{{9}{10}{Ejemplos de uso de la librería \texttt {pysentimiento}.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Resumen diagrama UML del código.\relax }}{11}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:uml}{{10}{11}{Resumen diagrama UML del código.\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Dataframe asociado al \texttt  {InstrumentRV} que representa a COPEC.\relax }}{11}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:instrument_sentiment_sample}{{11}{11}{Dataframe asociado al \texttt {InstrumentRV} que representa a COPEC.\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Promedio de los score en cada sentimiento para las acciones con mayor presencia en Twitter.\relax }}{12}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:mean_score_bar}{{12}{12}{Promedio de los score en cada sentimiento para las acciones con mayor presencia en Twitter.\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Índice construido con parámetros: $\texttt  {topAcc}=7$, $\texttt  {rankStep}=21$, $\texttt  {rebalanceStep}=21$ y como sentimiento se usa el positivo. Además, se usa como valor inicial $1000$. Vemos que se logra una forma similar al IPSA lo cual implica que con la información de Twitter se puede crear un índice que no se aleja mucho de la norma.\relax }}{12}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:twitter_index}{{13}{12}{Índice construido con parámetros: $\texttt {topAcc}=7$, $\texttt {rankStep}=21$, $\texttt {rebalanceStep}=21$ y como sentimiento se usa el positivo. Además, se usa como valor inicial $1000$. Vemos que se logra una forma similar al IPSA lo cual implica que con la información de Twitter se puede crear un índice que no se aleja mucho de la norma.\relax }{figure.caption.13}{}}
+\gdef \@abspage@last{13}

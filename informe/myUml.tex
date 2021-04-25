@@ -12,13 +12,13 @@
 		\node[text width=1.5cm,text centered] at (1.5,1) {
 			\texttt{getNemo()}
 			\texttt{getData()}
+			\texttt{setData()}
 		};
-		% Aristas
-		
-		%\draw[thick,red,-] (1.5,0) -- (4.5,0) ;
-		
-		% Cajas
-		%\node [draw, thick, shape=rectangle, minimum width=3cm, minimum height=3cm, anchor=center, color=blue] at (0,0) {};
-		%\node [draw, thick, shape=rectangle, minimum width=3cm, minimum height=3cm, anchor=center, color=blue] at (6,0) {};
+		\filldraw[color=red!60, fill=red!5, very thick] (-5,-3) rectangle (-2,-2);
+		\node[] at (-3.5,-2.5) {\texttt{InstrumentRF}};
+		\filldraw[color=red!60, fill=red!5, very thick] (5,-3) rectangle (8,-2);
+		\node[] at (6.5,-2.5) {\texttt{InstrumentRV}};
+		\draw[->, thick] (-2,-2) -- (0,0);
+		\draw[->, thick] (5,-2) -- (3,0);
 	\end{tikzpicture}
 \end{center}
